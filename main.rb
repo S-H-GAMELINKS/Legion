@@ -14,10 +14,23 @@ font = Font.new(18)
 
 x, y = 0, 0
 
+home_timeline = Hash.new
+
+i = 0
+
 Window.loop do
 
-    Window.draw_font(0, 0, "#{client.home_timeline.first.account.username}", font)
-    Window.draw_font(0, 30, "#{client.home_timeline.first.content}", font)
+    client.home_timeline.each do |toot|
+        home_timeline[i] = toot
+        i += 1
+    end
+
+    i = 0
+
+    for num in 0..10
+        #Window.draw_font(0, 30 * num, "#{home_timeline[num].account.username}", font)
+        Window.draw_font(0, 60 * num, "#{home_timeline[num].content}", font)
+    end
 
     if Input.key_push?(K_RETURN) then
         message = TokenInputForm("")
