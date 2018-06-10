@@ -18,6 +18,8 @@ home_timeline = Hash.new
 
 i = 0
 
+Window.caption=("Legion is Mastodon Client")
+
 Window.loop do
 
     client.home_timeline.each do |toot|
