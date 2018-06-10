@@ -9,16 +9,4 @@ TOKEN = TokenInputForm("")
 
 client = Mastodon::REST::Client.new(base_url: "#{URL}", bearer_token: "#{TOKEN}")
 
-client.home_timeline.each do |toot|
-    puts toot.account.username
-    puts toot.content.gsub!(/<p>|<\/p>/, "")
-end
-
-Window.loop do
-
-
-    #エスケープキーでループを抜ける
-	if Input.key_push?(K_ESCAPE) then
-		break
-	end
-end
+response = client.create_status("test toot for legion")
