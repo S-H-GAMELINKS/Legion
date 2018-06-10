@@ -2,6 +2,12 @@ require 'bundler/setup'
 Bundler.require(:default)
 
 require 'mastodon'
+require_relative 'input'
+
+url = UrlInputForm("https://mstdn.jp")
+token = TokenInputForm("")
+
+client = Mastodon::REST::Client.new(base_url: "#{url}", bearer_token: "#{token}")
 
 Window.loop do
 
