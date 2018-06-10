@@ -34,7 +34,7 @@ Window.loop do
         Window.draw_font(0, 60 * num, "#{home_timeline[num].content}", font)
     end
 
-    if Input.key_push?(K_RETURN) then
+    if Input.key_release?(K_RETURN) then
         message = Toot("")
         if message != "" then
             response = client.create_status(message.encode("UTF-8"))
