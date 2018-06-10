@@ -33,7 +33,7 @@ Window.loop do
     end
 
     if Input.key_push?(K_RETURN) then
-        message = TokenInputForm("")
+        message = Toot("")
         if message != "" then
             response = client.create_status(message.encode("UTF-8"))
         end
