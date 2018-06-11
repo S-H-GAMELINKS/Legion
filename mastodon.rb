@@ -13,13 +13,13 @@ class MastodonAPI
 
     def GetAvatar(url)
         open(url) {|f|
-            File.open("/avatar/avatar.png","wb") do |file|
+            File.open("avatar/avatar.png","wb") do |file|
                 file.puts f.read
             end
         }
-        Magick::ImageList.new("/avatar/avatar.png").resize(30, 30).write("/avatar/avatar.png")
+        Magick::ImageList.new("avatar/avatar.png").resize(30, 30).write("avatar/avatar.png")
 
-        Sprite.new(20, 20, Image.load("/avatar/avatar.png"))
+        Sprite.new(20, 20, Image.load("avatar/avatar.png"))
     end
 
     def GetHomeTimeline
