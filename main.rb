@@ -18,6 +18,8 @@ Window.resize(800, 640)
 
 count = 0
 
+Window.fps=120
+
 Window.loop do
 
     if Input.key_push?(K_RETURN) then
@@ -27,12 +29,11 @@ Window.loop do
         end
     end
 
-    if count % 9999999999 == 0 then 
-        mastodon.GetHomeTimeline
-        mastodon.DrawHomeTimeline
-    else
-        count += 1
-    end
+    mastodon.GetHomeTimeline
+    mastodon.DrawHomeTimeline
+
+    Window.draw_font(770, 600, "#{Window.fps}", Font.new(18))
+    Window.draw_font(700, 600, "#{count}", Font.new(18))
 
     #エスケープキーでループを抜ける
 	if Input.key_push?(K_ESCAPE) then
