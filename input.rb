@@ -8,5 +8,6 @@ def Toot(default)
     wsh.language = 'VBScript'
     #入力フォームの表示＆入力された文字列を変数strに格納
     str = wsh.eval(%Q!InputBox("Tootしたい内容を入力してください","Legion","#{default}")!)
+
     return str
 end

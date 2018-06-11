@@ -34,7 +34,7 @@ Window.loop do
 
     if Input.key_release?(K_RETURN) then
         message = Toot("")
-        if message != "" then
+        if message != "" && message != nil then
             response = client.create_status(message.encode("UTF-8"))
         end
     end
