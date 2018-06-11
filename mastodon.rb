@@ -43,7 +43,7 @@ class MastodonAPI
             @avatar[num].x, @avatar[num].y = 0, 60 * num + 10
             @avatar[num].draw
 
-            Window.draw_font(0, 60 * num + 45, "#{toot.text}", @font)
+            Window.draw_font(0, 60 * num + 45, "#{toot.text[0..20]}…", @font)
         end
     end
 end
