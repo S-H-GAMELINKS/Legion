@@ -25,6 +25,7 @@ Window.loop do
     if Input.key_push?(K_RETURN) then
         message = Toot("")
         if message != "" && message != nil then
+            message += "\n #Legion"
             response = client.create_status(message.encode("UTF-8"))
         end
     end
