@@ -20,10 +20,13 @@ class MastodonAPI
     def DrawHomeTimeline
         for num in 0..5
 
-            toot = Nokogiri::HTML.parse(@timeline[num].content, nil, nil)
+            toot = Nokogiri::HTML.parse(@timeline[num].content, nil, nil).search('p')
+            toot.search('br').each do |br|
+                br.replace('br')
+            end
 
-            Window.draw_font(0, 30 * num, "#{@timeline[num].account.username}", @font)
-            Window.draw_font(0, 60 * num, "#{toot.search('p').text.gsub(/<br>/, "\n")}", @font)
+            Window.draw_font(0, 60 * num + 20, "#{@timeline[num].account.username}", @font)
+            Window.draw_font(0, 60 * num + 40, "#{toot.text}", @font)
         end
     end
 end
