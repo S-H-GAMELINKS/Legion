@@ -16,12 +16,18 @@ mastodon = MastodonAPI.new(client)
 Window.caption=("Legion is Mastodon Client")
 Window.resize(800, 640)
 
+count = 0
+
 Window.loop do
 
-    mastodon.GetHomeTimeline
-    mastodon.DrawHomeTimeline
+    if count % 9999999999 == 0 then 
+        mastodon.GetHomeTimeline
+        mastodon.DrawHomeTimeline
+    else
+        count += 1
+    end
 
-    if Input.key_release?(K_RETURN) then
+    if Input.key_push?(K_RETURN) then
         message = Toot("")
         if message != "" && message != nil then
             response = client.create_status(message.encode("UTF-8"))
