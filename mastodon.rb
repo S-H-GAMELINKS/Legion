@@ -17,8 +17,8 @@ class MastodonAPI
 
     def DrawHomeTimeline
         for num in 0..5
-            #Window.draw_font(0, 30 * num, "#{home_timeline[num].account.username}", font)
-            Window.draw_font(0, 60 * num, "#{@timeline[num].content}", @font)
+            Window.draw_font(0, 30 * num, "#{@timeline[num].account.username}", @font)
+            Window.draw_font(0, 60 * num, "#{@timeline[num].content.gsub!(/<p>|<\/p>/, "").gsub(/<br>/, "\n")}", @font)
         end
     end
 end
