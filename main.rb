@@ -20,18 +20,18 @@ count = 0
 
 Window.loop do
 
-    if count % 9999999999 == 0 then 
-        mastodon.GetHomeTimeline
-        mastodon.DrawHomeTimeline
-    else
-        count += 1
-    end
-
     if Input.key_push?(K_RETURN) then
         message = Toot("")
         if message != "" && message != nil then
             response = client.create_status(message.encode("UTF-8"))
         end
+    end
+
+    if count % 9999999999 == 0 then 
+        mastodon.GetHomeTimeline
+        mastodon.DrawHomeTimeline
+    else
+        count += 1
     end
 
     #エスケープキーでループを抜ける

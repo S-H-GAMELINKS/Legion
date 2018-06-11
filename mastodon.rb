@@ -32,12 +32,10 @@ class MastodonAPI
     end
 
     def DrawHomeTimeline
-        for num in 0..10
+        for num in 0..5
 
             toot = Nokogiri::HTML.parse(@timeline[num].content, nil, nil).search('p')
-            toot.search('br').each do |br|
-                br.replace('br')
-            end
+            toot.text.gsub!(/<br>/, "\n")
 
             @avatar[num] = GetAvatar("#{@timeline[num].account.avatar}")
             @avatar[num].x, @avatar[num].y = 0, 60 * num + 10
