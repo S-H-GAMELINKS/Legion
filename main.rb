@@ -14,7 +14,7 @@ client = Mastodon::REST::Client.new(base_url: ENV["MASTODON_URL"], bearer_token:
 mastodon = MastodonAPI.new(client)
 
 Window.caption=("Legion is Mastodon Client")
-Window.full_screen=true
+Window.resize(800, 640)
 
 Window.loop do
 
