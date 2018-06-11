@@ -24,6 +24,7 @@ GEM
     nokogiri (1.8.2-x86-mingw32)
       mini_portile2 (~> 2.3.0)
     public_suffix (3.0.2)
+    rmagick (2.16.0)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.5-x86-mingw32)
@@ -37,6 +38,7 @@ DEPENDENCIES
   highline
   mastodon-api
   nokogiri
+  rmagick
 
 BUNDLED WITH
    1.16.1
