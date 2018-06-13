@@ -51,7 +51,8 @@ class MastodonStreaming
     def LocalTimeline(window)
         @stream.firehose() do |toot|
             if toot.uri.to_s =~ /#{ENV['MASTODON_URL'].to_s}/ then
-                ltl = TkMessage.new(window, 'text' => toot.content)
+                message = Nokogiri::HTML.parse(toot.content, nil, nil).search('p')
+                ltl = TkMessage.new(window, 'text' => message.text)
                 ltl.pack('side' => 'left', 'fill' => 'both')
             end
         end
