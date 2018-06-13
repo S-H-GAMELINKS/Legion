@@ -31,6 +31,10 @@ mediabutton = TkButton.new(nil, 'text' => 'media',
 		       'command' => proc{mastodon.MediaUpload(Tk.getOpenFile)})
 mediabutton.pack('side' => 'left', 'fill' => 'both')
 
+htl_button = TkButton.new(nil, 'text' => 'HTL',
+		  'command' => proc{newwindow = TkToplevel.new;newwindow.title('ホームタイムライン')})
+htl_button.pack('side' => 'left', 'fill' => 'both')
+
 quitbutton = TkButton.new(nil, 'text' => 'quit',
 		  'command' => proc{exit})
 quitbutton.pack('side' => 'right', 'fill' => 'both')
