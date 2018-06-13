@@ -16,7 +16,7 @@ mastodon = MastodonAPI.new(client)
 var = TkVariable.new('')
 entry = TkEntry.new(nil, 'textvariable' => var)
 entry.pack('side' => 'top', 'fill' => 'both')
-button = TkButton.new(nil, 'text' => 'print', 
+button = TkButton.new(nil, 'text' => 'toot', 
 		       'command' => proc{mastodon.Toot(var.value)})
 button.pack('side' => 'left', 'fill' => 'both')
 
