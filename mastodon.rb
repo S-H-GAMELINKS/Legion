@@ -33,6 +33,9 @@ class MastodonStreaming
     end
 
     def HomeTimeline(window)
-        TkLabel.new(window, 'text' => @stream.user().content)
+        @stream.user() do |toot|
+            htl =TkMessage.new(window, 'text' => toot.content)
+            htl.pack
+        end
     end
 end

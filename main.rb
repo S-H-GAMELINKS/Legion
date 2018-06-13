@@ -18,6 +18,7 @@ client = Mastodon::REST::Client.new(base_url: ENV["MASTODON_URL"], bearer_token:
 mastodon = MastodonAPI.new(client)
 
 stream = Mastodon::Streaming::Client.new(base_url: ENV["MASTODON_URL"], bearer_token: ENV["MASTODON_TOKEN"])
+streaming = MastodonStreaming.new(stream)
 
 var = TkVariable.new('')
 
@@ -34,6 +35,7 @@ mediabutton.pack('side' => 'left', 'fill' => 'both')
 
 htl_window = TkToplevel.new
 htl_window.title('ホームタイムライン')
+streaming.HomeTimeline(htl_window)
                             
 ltl_window = TkToplevel.new
 ltl_window.title('ローカルタイムライン');
