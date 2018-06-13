@@ -8,6 +8,10 @@ require 'tk'
 require_relative 'input'
 require_relative 'mastodon'
 
+TkRoot.new do   #タイトルバーの表示
+    title( "ファイル選択ボタン" )
+end
+
 Dotenv.load
 
 client = Mastodon::REST::Client.new(base_url: ENV["MASTODON_URL"], bearer_token: ENV["MASTODON_TOKEN"])
@@ -19,6 +23,11 @@ text.pack('side' => 'top', 'fill' => 'both')
 button = TkButton.new(nil, 'text' => 'toot', 
 		       'command' => proc{mastodon.Toot(text.value);text.value=""})
 button.pack('side' => 'left', 'fill' => 'both')
+
+l=TkLabel.new.pack
+mediabutton = TkButton.new(nil, 'text' => 'media', 
+		       'command' => proc{mastodon.MediaUpload(Tk.getOpenFile)})
+mediabutton.pack('side' => 'left', 'fill' => 'both')
 
 quitbutton = TkButton.new(nil, 'text' => 'quit',
 		  'command' => proc{exit})
