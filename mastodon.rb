@@ -36,7 +36,7 @@ class MastodonStreaming
         @stream.user() do |toot|
             message = Nokogiri::HTML.parse(toot.content, nil, nil).search('p')
             htl =TkMessage.new(window, 'text' => message.text)
-            htl.pack
+            htl.pack('side' => 'bottom')
         end
     end
 
@@ -44,7 +44,7 @@ class MastodonStreaming
         @stream.firehose() do |toot|
             message = Nokogiri::HTML.parse(toot.content, nil, nil).search('p')
             ftl = TkMessage.new(window, 'text' => message.text)
-            ftl.pack
+            ftl.pack('side' => 'bottom')
         end
     end
 
@@ -53,7 +53,7 @@ class MastodonStreaming
             if toot.uri.to_s =~ /#{ENV['MASTODON_URL'].to_s}/ then
                 message = Nokogiri::HTML.parse(toot.content, nil, nil).search('p')
                 ltl = TkMessage.new(window, 'text' => message.text)
-                ltl.pack
+                ltl.pack('side' => 'bottom')
             end
         end
     end
