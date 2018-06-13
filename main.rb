@@ -35,6 +35,10 @@ htl_button = TkButton.new(nil, 'text' => 'HTL',
 		  'command' => proc{newwindow = TkToplevel.new;newwindow.title('ホームタイムライン')})
 htl_button.pack('side' => 'left', 'fill' => 'both')
 
+ltl_button = TkButton.new(nil, 'text' => 'LTL',
+		  'command' => proc{newwindow = TkToplevel.new;newwindow.title('ローカルタイムライン')})
+ltl_button.pack('side' => 'left', 'fill' => 'both')
+
 quitbutton = TkButton.new(nil, 'text' => 'quit',
 		  'command' => proc{exit})
 quitbutton.pack('side' => 'right', 'fill' => 'both')
