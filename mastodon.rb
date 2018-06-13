@@ -38,4 +38,11 @@ class MastodonStreaming
             htl.pack
         end
     end
+
+    def PublicTimeline(window)
+        @stream.firehose() do |toot|
+            ltl = TkMessage.new(window, 'text' => toot.content)
+            ltl.pack('side' => 'left', 'fill' => 'both')
+        end
+    end
 end

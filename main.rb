@@ -33,18 +33,12 @@ mediabutton = TkButton.new(nil, 'text' => 'media',
 		       'command' => proc{mastodon.MediaUpload(Tk.getOpenFile)})
 mediabutton.pack('side' => 'left', 'fill' => 'both')
 
-htl_window = TkToplevel.new
-htl_window.title('ホームタイムライン')
-streaming.HomeTimeline(htl_window)
-                            
-ltl_window = TkToplevel.new
-ltl_window.title('ローカルタイムライン');
-
-ftl_window = TkToplevel.new
-ftl_window.title('連合タイムライン');
-
 quitbutton = TkButton.new(nil, 'text' => 'quit',
 		  'command' => proc{exit})
 quitbutton.pack('side' => 'right', 'fill' => 'both')
+
+timeline_window = TkToplevel.new
+timeline_window.title('ホームタイムライン')
+streaming.HomeTimeline(timeline_window)
 
 Tk.mainloop
