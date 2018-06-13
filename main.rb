@@ -9,7 +9,7 @@ require_relative 'input'
 require_relative 'mastodon'
 
 TkRoot.new do   #タイトルバーの表示
-    title( "ファイル選択ボタン" )
+    title( "Legion" )
 end
 
 Dotenv.load
@@ -32,26 +32,14 @@ mediabutton = TkButton.new(nil, 'text' => 'media',
 		       'command' => proc{mastodon.MediaUpload(Tk.getOpenFile)})
 mediabutton.pack('side' => 'left', 'fill' => 'both')
 
-htl_button = TkButton.new(nil, 'text' => 'HTL',
-          'command' => proc{htl_window = TkToplevel.new;htl_window.title('ホームタイムライン');
-                            stream.user() do |toot|
-                            puts toot.content
-                            end})
-htl_button.pack('side' => 'left', 'fill' => 'both')
+htl_window = TkToplevel.new
+htl_window.title('ホームタイムライン')
+                            
+ltl_window = TkToplevel.new
+ltl_window.title('ローカルタイムライン');
 
-ltl_button = TkButton.new(nil, 'text' => 'LTL',
-          'command' => proc{ltl_window = TkToplevel.new;ltl_window.title('ローカルタイムライン');
-                            stream.firehose(:local => true) do |toot|
-                            puts toot.content
-                            end})
-ltl_button.pack('side' => 'left', 'fill' => 'both')
-
-ftl_button = TkButton.new(nil, 'text' => 'FTL',
-          'command' => proc{ftl_window = TkToplevel.new;ftl_window.title('連合タイムライン');
-                            stream.firehose() do |toot|
-                            puts toot.content
-                            end})
-ftl_button.pack('side' => 'left', 'fill' => 'both')
+ftl_window = TkToplevel.new
+ftl_window.title('連合タイムライン');
 
 quitbutton = TkButton.new(nil, 'text' => 'quit',
 		  'command' => proc{exit})

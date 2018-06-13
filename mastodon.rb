@@ -12,11 +12,27 @@ class MastodonAPI
     end
 
     def MediaUpload(file_path)
-        @media_id = @client.upload_media(file_path).id
+
+        if file_path != nil then
+            @media_id = @client.upload_media(file_path).id
+        else
+            @media_id = nil
+        end
     end
 
     def Toot(message)
         message += "\n #Legion"
         response = @client.create_status(message.encode("UTF-8"), :media_ids => @media_id)
+    end
+end
+
+class MastodonStreaming
+
+    def initialize(stream)
+        @stream = stream
+    end
+
+    def HomeTimeline(window)
+        TkLabel.new(window, 'text' => @stream.user().content)
     end
 end
