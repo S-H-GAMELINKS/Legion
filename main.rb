@@ -14,7 +14,7 @@ client = Mastodon::REST::Client.new(base_url: ENV["MASTODON_URL"], bearer_token:
 mastodon = MastodonAPI.new(client)
 
 var = TkVariable.new('')
-text = TkText.new(nil, 'width' => '50', 'height'=> '50')
+text = TkText.new(nil, 'width' => '30', 'height'=> '30')
 text.pack('side' => 'top', 'fill' => 'both')
 button = TkButton.new(nil, 'text' => 'toot', 
 		       'command' => proc{mastodon.Toot(text.value);text.value=""})
