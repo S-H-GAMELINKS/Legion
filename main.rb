@@ -26,7 +26,6 @@ button = TkButton.new(nil, 'text' => 'toot',
 		       'command' => proc{mastodon.Toot(text.value);text.value=""})
 button.pack('side' => 'left', 'fill' => 'both')
 
-l=TkLabel.new.pack
 mediabutton = TkButton.new(nil, 'text' => 'media', 
 		       'command' => proc{mastodon.MediaUpload(Tk.getOpenFile)})
 mediabutton.pack('side' => 'left', 'fill' => 'both')
