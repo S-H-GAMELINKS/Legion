@@ -32,15 +32,15 @@ mediabutton = TkButton.new(nil, 'text' => 'media',
 mediabutton.pack('side' => 'left', 'fill' => 'both')
 
 htl_button = TkButton.new(nil, 'text' => 'HTL',
-		  'command' => proc{newwindow = TkToplevel.new;newwindow.title('ホームタイムライン')})
+		  'command' => proc{htl_window = TkToplevel.new;newwindow.title('ホームタイムライン')})
 htl_button.pack('side' => 'left', 'fill' => 'both')
 
 ltl_button = TkButton.new(nil, 'text' => 'LTL',
-		  'command' => proc{newwindow = TkToplevel.new;newwindow.title('ローカルタイムライン')})
+		  'command' => proc{ltl_window = TkToplevel.new;newwindow.title('ローカルタイムライン')})
 ltl_button.pack('side' => 'left', 'fill' => 'both')
 
 ftl_button = TkButton.new(nil, 'text' => 'FTL',
-		  'command' => proc{newwindow = TkToplevel.new;newwindow.title('連合タイムライン')})
+		  'command' => proc{ftl_window = TkToplevel.new;newwindow.title('連合タイムライン')})
 ftl_button.pack('side' => 'left', 'fill' => 'both')
 
 quitbutton = TkButton.new(nil, 'text' => 'quit',
