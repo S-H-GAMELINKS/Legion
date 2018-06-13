@@ -11,6 +11,11 @@ class MastodonAPI
         @avatar = Array.new
     end
 
+    def Toot(message)
+        message += "\n #Legion"
+        response = @client.create_status(message.encode("UTF-8"))
+    end
+
     def GetAvatar(url)
         open(url) {|f|
             File.open("avatar/avatar.png","wb") do |file|
