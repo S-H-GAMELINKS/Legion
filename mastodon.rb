@@ -47,9 +47,11 @@ class MastodonStreaming
     end
 
     def LocalTimeline(window)
-        @stream.firehose()) do |toot|
-            ltl = TkMessage.new(window, 'text' => toot.content)
-            ltl.pack('side' => 'left', 'fill' => 'both')
+        @stream.firehose() do |toot|
+            if toot.uri.to_s =~ /#{ENV['MASTODON_URL'].to_s}/ then
+                ltl = TkMessage.new(window, 'text' => toot.content)
+                ltl.pack('side' => 'left', 'fill' => 'both')
+            end
         end
     end
 end
