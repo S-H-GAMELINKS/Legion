@@ -30,8 +30,8 @@ Window.loop do
         end
     end
 
-    mastodon.GetHomeTimeline
-    mastodon.DrawHomeTimeline
+#    mastodon.GetHomeTimeline
+#    mastodon.DrawHomeTimeline
 
     Window.draw_font(770, 600, "#{Window.fps}", Font.new(18))
     Window.draw_font(700, 600, "#{count}", Font.new(18))
