@@ -42,7 +42,8 @@ class MastodonStreaming
 
     def PublicTimeline(window)
         @stream.firehose() do |toot|
-            ftl = TkMessage.new(window, 'text' => toot.content)
+            message = Nokogiri::HTML.parse(toot.content, nil, nil).search('p')
+            ftl = TkMessage.new(window, 'text' => message.text)
             ftl.pack('side' => 'left', 'fill' => 'both')
         end
     end
