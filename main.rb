@@ -40,11 +40,17 @@ htl_button = TkButton.new(nil, 'text' => 'HTL',
 htl_button.pack('side' => 'left', 'fill' => 'both')
 
 ltl_button = TkButton.new(nil, 'text' => 'LTL',
-		  'command' => proc{ltl_window = TkToplevel.new;newwindow.title('ローカルタイムライン')})
+          'command' => proc{ltl_window = TkToplevel.new;ltl_window.title('ローカルタイムライン');
+                            stream.firehose(:local => true) do |toot|
+                            puts toot.content
+                            end})
 ltl_button.pack('side' => 'left', 'fill' => 'both')
 
 ftl_button = TkButton.new(nil, 'text' => 'FTL',
-		  'command' => proc{ftl_window = TkToplevel.new;newwindow.title('連合タイムライン')})
+          'command' => proc{ftl_window = TkToplevel.new;ftl_window.title('連合タイムライン');
+                            stream.firehose() do |toot|
+                            puts toot.content
+                            end})
 ftl_button.pack('side' => 'left', 'fill' => 'both')
 
 quitbutton = TkButton.new(nil, 'text' => 'quit',
