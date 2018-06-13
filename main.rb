@@ -17,7 +17,7 @@ var = TkVariable.new('')
 entry = TkEntry.new(nil, 'textvariable' => var)
 entry.pack('side' => 'top', 'fill' => 'both')
 button = TkButton.new(nil, 'text' => 'toot', 
-		       'command' => proc{mastodon.Toot(var.value)})
+		       'command' => proc{mastodon.Toot(var.value);var.value=""})
 button.pack('side' => 'left', 'fill' => 'both')
 
 quitbutton = TkButton.new(nil, 'text' => 'quit',
