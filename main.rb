@@ -17,6 +17,8 @@ Dotenv.load
 client = Mastodon::REST::Client.new(base_url: ENV["MASTODON_URL"], bearer_token: ENV["MASTODON_TOKEN"])
 mastodon = MastodonAPI.new(client)
 
+stream = Mastodon::Streaming::Client.new(base_url: ENV["MASTODON_URL"], bearer_token: ENV["MASTODON_TOKEN"])
+
 var = TkVariable.new('')
 
 text = TkText.new(nil, 'width' => '30', 'height'=> '30')
@@ -31,7 +33,10 @@ mediabutton = TkButton.new(nil, 'text' => 'media',
 mediabutton.pack('side' => 'left', 'fill' => 'both')
 
 htl_button = TkButton.new(nil, 'text' => 'HTL',
-		  'command' => proc{htl_window = TkToplevel.new;newwindow.title('ホームタイムライン')})
+          'command' => proc{htl_window = TkToplevel.new;htl_window.title('ホームタイムライン');
+                            stream.user() do |toot|
+                            puts toot.content
+                            end})
 htl_button.pack('side' => 'left', 'fill' => 'both')
 
 ltl_button = TkButton.new(nil, 'text' => 'LTL',
