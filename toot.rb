@@ -67,8 +67,8 @@ quitbutton = TkButton.new(tootFrame, 'text' => 'quit',
 quitbutton.pack('side' => 'right', 'fill' => 'both')
 
 puts htl_list.insert('end', streaming.HomeTimeline(home_timeline))	
-puts ltl_list.insert('end', streaming.HomeTimeline(local_timeline))	
-puts ftl_list.insert('end', streaming.HomeTimeline(public_timeline))
+puts ltl_list.insert('end', streaming.LocalTimeline(local_timeline))	
+puts ftl_list.insert('end', streaming.PublicTimeline(public_timeline))
 
 Tk.mainloop do
 	
