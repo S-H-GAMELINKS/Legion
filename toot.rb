@@ -15,10 +15,19 @@ end
 Dotenv.load
 
 tootFrame = TkFrame.new(nil)
-tootFrame.pack('side' => 'left')
+tootFrame.pack('side' => 'left', 'fill' => 'both')
+
+home_timeline = TkFrame.new(nil)
+home_timeline.pack('side' => 'left', 'fill' => 'both')
+
+label1 = TkLabel.new(home_timeline, 'text' => 'ホームタイムライン')
+label1.pack('side' => 'top', 'fill' => 'both')
 
 client = Mastodon::REST::Client.new(base_url: ENV["MASTODON_URL"], bearer_token: ENV["MASTODON_TOKEN"])
 mastodon = MastodonAPI.new(client)
+
+stream = Mastodon::Streaming::Client.new(base_url: ENV["MASTODON_URL"], bearer_token: ENV["MASTODON_TOKEN"])
+streaming = MastodonStreaming.new(stream)
 
 var = TkVariable.new('')
 
@@ -37,4 +46,6 @@ quitbutton = TkButton.new(tootFrame, 'text' => 'quit',
 		  'command' => proc{exit})
 quitbutton.pack('side' => 'right', 'fill' => 'both')
 
-Tk.mainloop
+Tk.mainloop do
+	streaming.HomeTimeline(home_timeline)
+end
