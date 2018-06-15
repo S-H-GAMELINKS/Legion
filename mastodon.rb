@@ -36,7 +36,7 @@ class MastodonStreaming
         @stream.user() do |toot|
             message = Nokogiri::HTML.parse(toot.content, nil, nil).search('p')
             htl =TkMessage.new(window, 'text' => message.text)
-            htl.pack('side' => 'bottom')
+            return htl
         end
     end
 
