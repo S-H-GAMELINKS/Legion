@@ -35,8 +35,7 @@ class MastodonStreaming
     def HomeTimeline(window)
         @stream.user() do |toot|
             message = Nokogiri::HTML.parse(toot.content, nil, nil).search('p')
-            htl =TkMessage.new(window, 'text' => message.text)
-            return htl
+            return message.text
         end
     end
 

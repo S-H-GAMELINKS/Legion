@@ -22,6 +22,9 @@ home_timeline.pack('side' => 'left', 'fill' => 'both')
 htl_label = TkLabel.new(home_timeline, 'text' => 'ホームタイムライン')
 htl_label.pack('side' => 'top', 'fill' => 'both')
 
+htl_list = TkListbox.new(home_timeline, 'height' => 25, 'selectmode' => 'multiple')
+htl_list.pack('fill' => 'both')
+
 local_timeline = TkFrame.new(nil)
 local_timeline.pack('side' => 'left', 'fill' => 'both')
 
@@ -57,6 +60,8 @@ quitbutton = TkButton.new(tootFrame, 'text' => 'quit',
 		  'command' => proc{exit})
 quitbutton.pack('side' => 'right', 'fill' => 'both')
 
+puts htl_list.insert('end', streaming.HomeTimeline(home_timeline))	
+
 Tk.mainloop do
-	streaming.HomeTimeline(home_timeline)
+	
 end
