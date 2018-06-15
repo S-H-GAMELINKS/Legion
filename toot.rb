@@ -29,6 +29,12 @@ local_timeline.pack('side' => 'left', 'fill' => 'both')
 ltl_label = TkLabel.new(local_timeline, 'text' => 'ローカルタイムライン')
 ltl_label.pack('side' => 'top', 'fill' => 'both')
 
+public_timeline = TkFrame.new(nil)
+public_timeline.pack('side' => 'left', 'fill' => 'both')
+
+ftl_label = TkLabel.new(public_timeline, 'text' => '連合タイムライン')
+ftl_label.pack('side' => 'top', 'fill' => 'both')
+
 client = Mastodon::REST::Client.new(base_url: ENV["MASTODON_URL"], bearer_token: ENV["MASTODON_TOKEN"])
 mastodon = MastodonAPI.new(client)
 
