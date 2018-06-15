@@ -14,23 +14,26 @@ end
 
 Dotenv.load
 
+tootFrame = TkFrame.new(nil)
+tootFrame.pack('side' => 'left')
+
 client = Mastodon::REST::Client.new(base_url: ENV["MASTODON_URL"], bearer_token: ENV["MASTODON_TOKEN"])
 mastodon = MastodonAPI.new(client)
 
 var = TkVariable.new('')
 
-text = TkText.new(nil, 'width' => '30', 'height'=> '30')
+text = TkText.new(tootFrame, 'width' => '30', 'height'=> '30')
 text.pack('side' => 'top', 'fill' => 'both')
 
-button = TkButton.new(nil, 'text' => 'toot', 
+button = TkButton.new(tootFrame, 'text' => 'toot', 
 		       'command' => proc{mastodon.Toot(text.value);text.value=""})
 button.pack('side' => 'left', 'fill' => 'both')
 
-mediabutton = TkButton.new(nil, 'text' => 'media', 
+mediabutton = TkButton.new(tootFrame, 'text' => 'media', 
 		       'command' => proc{mastodon.MediaUpload(Tk.getOpenFile)})
 mediabutton.pack('side' => 'left', 'fill' => 'both')
 
-quitbutton = TkButton.new(nil, 'text' => 'quit',
+quitbutton = TkButton.new(tootFrame, 'text' => 'quit',
 		  'command' => proc{exit})
 quitbutton.pack('side' => 'right', 'fill' => 'both')
 
