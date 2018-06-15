@@ -40,6 +40,9 @@ public_timeline.pack('side' => 'left', 'fill' => 'both')
 ftl_label = TkLabel.new(public_timeline, 'text' => '連合タイムライン')
 ftl_label.pack('side' => 'top', 'fill' => 'both')
 
+ftl_list = TkListbox.new(public_timeline, 'height' => 25, 'selectmode' => 'multiple')
+ftl_list.pack('fill' => 'both')
+
 client = Mastodon::REST::Client.new(base_url: ENV["MASTODON_URL"], bearer_token: ENV["MASTODON_TOKEN"])
 mastodon = MastodonAPI.new(client)
 
@@ -65,6 +68,7 @@ quitbutton.pack('side' => 'right', 'fill' => 'both')
 
 puts htl_list.insert('end', streaming.HomeTimeline(home_timeline))	
 puts ltl_list.insert('end', streaming.HomeTimeline(home_timeline))	
+puts ftl_list.insert('end', streaming.HomeTimeline(public_timeline))
 
 Tk.mainloop do
 	
