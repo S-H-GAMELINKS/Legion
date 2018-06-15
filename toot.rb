@@ -5,7 +5,6 @@ require 'mastodon'
 require 'highline/import'
 require 'dotenv'
 require 'tk'
-require_relative 'input'
 require_relative 'mastodon'
 
 TkRoot.new do   #タイトルバーの表示
