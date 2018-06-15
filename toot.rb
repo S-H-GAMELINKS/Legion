@@ -20,8 +20,8 @@ tootFrame.pack('side' => 'left', 'fill' => 'both')
 home_timeline = TkFrame.new(nil)
 home_timeline.pack('side' => 'left', 'fill' => 'both')
 
-label1 = TkLabel.new(home_timeline, 'text' => 'ホームタイムライン')
-label1.pack('side' => 'top', 'fill' => 'both')
+htl_label = TkLabel.new(home_timeline, 'text' => 'ホームタイムライン')
+htl_label.pack('side' => 'top', 'fill' => 'both')
 
 client = Mastodon::REST::Client.new(base_url: ENV["MASTODON_URL"], bearer_token: ENV["MASTODON_TOKEN"])
 mastodon = MastodonAPI.new(client)
