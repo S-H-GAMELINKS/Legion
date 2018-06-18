@@ -30,6 +30,7 @@ GEM
     mini_portile2 (2.3.0)
     nokogiri (1.8.2-x86-mingw32)
       mini_portile2 (~> 2.3.0)
+    parallel (1.12.1)
     public_suffix (3.0.2)
     rmagick (2.16.0)
     unf (0.1.4)
@@ -44,6 +45,7 @@ DEPENDENCIES
   highline
   mastodon-api!
   nokogiri
+  parallel
   rmagick
 
 BUNDLED WITH
