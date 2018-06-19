@@ -109,7 +109,8 @@ nsfw_button = TkButton.new(tootFrame, 'text' => 'nsfw',
 nsfw_button.pack('side' => 'left', 'fill' => 'both')
 
 cw_button = TkButton.new(tootFrame, 'text' => 'cw', 
-		       'command' => proc{spoiler_text.value == "" ? spoiler_text.value = "Contents Warning!" : spoiler_text.value = "" })
+			   'command' => proc{spoiler_text.value == "" ? spoiler_text.value = "Contents Warning!" : spoiler_text.value = "";
+			   					sensitive.value == 'true' ? sensitive.value = 'false' : sensitive.value = 'true' })
 cw_button.pack('side' => 'left', 'fill' => 'both')
 
 quitbutton = TkButton.new(tootFrame, 'text' => 'quit',
