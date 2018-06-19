@@ -38,6 +38,10 @@ ltl_label.pack('side' => 'top', 'fill' => 'both')
 ltl_list = TkListbox.new(local_timeline, 'height' => 25, 'selectmode' => 'multiple')
 ltl_list.pack('fill' => 'both')
 
+local_timeline_yscrollbar = TkScrollbar.new(ltl_list) {orient "vertical"; command proc{|*args| ltl_list.yview(*args);} }
+ltl_list['yscrollcommand'] = proc{|*args| local_timeline_yscrollbar.set(*args);}
+local_timeline_yscrollbar.pack('side' => 'right')
+
 public_timeline = TkFrame.new(window)
 public_timeline.pack('side' => 'left', 'fill' => 'both')
 
