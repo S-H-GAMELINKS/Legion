@@ -1,12 +1,13 @@
 GIT
   remote: https://github.com/tootsuite/mastodon-api.git
-  revision: a3ff60a872191aa2f499a2b4c7a85045ead14e64
-  ref: a3ff60a
+  revision: 189deb8219ae1ce7c34386d9ad1ca7e4a5fec62c
+  ref: 189deb8
   specs:
-    mastodon-api (1.1.0)
-      addressable (~> 2.4)
+    mastodon-api (1.2.0)
+      addressable (~> 2.5)
       buftok
-      http (~> 2.0)
+      http (~> 3.0)
+      oj (~> 3.3)
 
 GEM
   remote: https://rubygems.org/
@@ -18,18 +19,19 @@ GEM
       unf (>= 0.0.5, < 1.0.0)
     dotenv (2.4.0)
     highline (1.7.10)
-    http (2.2.2)
+    http (3.3.0)
       addressable (~> 2.3)
       http-cookie (~> 1.0)
-      http-form_data (~> 1.0.1)
+      http-form_data (~> 2.0)
       http_parser.rb (~> 0.6.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
-    http-form_data (1.0.3)
+    http-form_data (2.1.1)
     http_parser.rb (0.6.0)
     mini_portile2 (2.3.0)
     nokogiri (1.8.2-x86-mingw32)
       mini_portile2 (~> 2.3.0)
+    oj (3.6.2)
     parallel (1.12.1)
     public_suffix (3.0.2)
     rmagick (2.16.0)

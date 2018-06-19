@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem 'mastodon-api', git: 'https://github.com/tootsuite/mastodon-api.git', ref: 'a3ff60a'
+gem 'mastodon-api', git: 'https://github.com/tootsuite/mastodon-api.git', ref: '189deb8'
 gem 'dotenv'
 gem "highline"
 gem 'nokogiri'
