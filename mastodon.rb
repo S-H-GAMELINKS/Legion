@@ -20,9 +20,9 @@ class MastodonAPI
         end
     end
 
-    def Toot(message, visibility, sensitive)
+    def Toot(message, visibility, sensitive, spoiler_text)
         message += "\n #Legion"
-        response = @client.create_status(message.encode("UTF-8"), :media_ids => @media_id, :visibility => visibility, :sensitive => sensitive)
+        response = @client.create_status(message.encode("UTF-8"), :media_ids => @media_id, :visibility => visibility, :sensitive => sensitive, :spoiler_text => spoiler_text)
     end
 end
 
