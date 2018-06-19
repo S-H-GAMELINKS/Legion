@@ -27,7 +27,7 @@ htl_list.pack('fill' => 'both')
 
 home_timeline_yscrollbar = TkScrollbar.new(htl_list) {orient "vertical"; command proc{|*args| htl_list.yview(*args);} }
 htl_list['yscrollcommand'] = proc{|*args| home_timeline_yscrollbar.set(*args);}
-home_timeline_yscrollbar.pack('side' => 'right')
+home_timeline_yscrollbar.pack('side' => 'right', 'fill' => 'both', 'ipadx' => '5', 'ipady' => '170')
 
 local_timeline = TkFrame.new(window)
 local_timeline.pack('side' => 'left', 'fill' => 'both')
@@ -40,7 +40,7 @@ ltl_list.pack('fill' => 'both')
 
 local_timeline_yscrollbar = TkScrollbar.new(ltl_list) {orient "vertical"; command proc{|*args| ltl_list.yview(*args);} }
 ltl_list['yscrollcommand'] = proc{|*args| local_timeline_yscrollbar.set(*args);}
-local_timeline_yscrollbar.pack('side' => 'right')
+local_timeline_yscrollbar.pack('side' => 'right', 'fill' => 'both', 'ipadx' => '5', 'ipady' => '170')
 
 public_timeline = TkFrame.new(window)
 public_timeline.pack('side' => 'left', 'fill' => 'both')
@@ -53,7 +53,7 @@ ftl_list.pack('fill' => 'both')
 
 public_timeline_yscrollbar = TkScrollbar.new(ftl_list) {orient "vertical"; command proc{|*args| ftl_list.yview(*args);} }
 ftl_list['yscrollcommand'] = proc{|*args| public_timeline_yscrollbar.set(*args);}
-public_timeline_yscrollbar.pack('side' => 'right')
+public_timeline_yscrollbar.pack('side' => 'right', 'fill' => 'both', 'ipadx' => '5', 'ipady' => '170')
 
 client = Mastodon::REST::Client.new(base_url: ENV["MASTODON_URL"], bearer_token: ENV["MASTODON_TOKEN"])
 mastodon = MastodonAPI.new(client)
