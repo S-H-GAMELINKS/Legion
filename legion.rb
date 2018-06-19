@@ -74,12 +74,13 @@ stream = Mastodon::Streaming::Client.new(base_url: ENV["MASTODON_URL"], bearer_t
 streaming = MastodonStreaming.new(stream)
 
 visibility = TkVariable.new('public')
+sensitive = TkVariable.new('false')
 
 text = TkText.new(tootFrame, 'width' => '50', 'height'=> '30')
 text.pack('side' => 'top', 'fill' => 'both')
 
 button = TkButton.new(tootFrame, 'text' => 'toot', 
-		       'command' => proc{mastodon.Toot(text.value, visibility.value);text.value=""})
+		       'command' => proc{mastodon.Toot(text.value, visibility.value, sensitive.value);text.value=""})
 button.pack('side' => 'left', 'fill' => 'both')
 
 mediabutton = TkButton.new(tootFrame, 'text' => 'media', 
@@ -101,6 +102,10 @@ private_button.pack('side' => 'left', 'fill' => 'both')
 direct_button = TkButton.new(tootFrame, 'text' => 'direct', 
 		       'command' => proc{visibility.value = 'direct' })
 direct_button.pack('side' => 'left', 'fill' => 'both')
+
+nsfw_button = TkButton.new(tootFrame, 'text' => 'nsfw', 
+		       'command' => proc{sensitive.value == 'true' ? sensitive.value = 'false' : sensitive.value = 'true' })
+nsfw_button.pack('side' => 'left', 'fill' => 'both')
 
 quitbutton = TkButton.new(tootFrame, 'text' => 'quit',
 		  'command' => proc{exit})
