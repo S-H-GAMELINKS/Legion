@@ -81,7 +81,7 @@ text = TkText.new(tootFrame, 'width' => '50', 'height'=> '30')
 text.pack('side' => 'top', 'fill' => 'both')
 
 button = TkButton.new(tootFrame, 'text' => 'toot', 
-		       'command' => proc{mastodon.Toot(text.value, visibility.value, sensitive.value, spoiler_text.value);text.value=""; spoiler_text.value=""})
+		       'command' => proc{mastodon.Toot(text.value, visibility.value, sensitive.value, spoiler_text.value);text.value=""})
 button.pack('side' => 'left', 'fill' => 'both')
 
 mediabutton = TkButton.new(tootFrame, 'text' => 'media', 
@@ -109,7 +109,7 @@ nsfw_button = TkButton.new(tootFrame, 'text' => 'nsfw',
 nsfw_button.pack('side' => 'left', 'fill' => 'both')
 
 cw_button = TkButton.new(tootFrame, 'text' => 'cw', 
-		       'command' => proc{sensitive.value == "" ? sensitive.value = "Contents Warning!" : sensitive.value = "" })
+		       'command' => proc{spoiler_text.value == "" ? spoiler_text.value = "Contents Warning!" : spoiler_text.value = "" })
 cw_button.pack('side' => 'left', 'fill' => 'both')
 
 quitbutton = TkButton.new(tootFrame, 'text' => 'quit',
