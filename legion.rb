@@ -51,6 +51,10 @@ ftl_label.pack('side' => 'top', 'fill' => 'both')
 ftl_list = TkListbox.new(public_timeline, 'height' => 25, 'selectmode' => 'multiple')
 ftl_list.pack('fill' => 'both')
 
+public_timeline_yscrollbar = TkScrollbar.new(ftl_list) {orient "vertical"; command proc{|*args| ftl_list.yview(*args);} }
+ftl_list['yscrollcommand'] = proc{|*args| public_timeline_yscrollbar.set(*args);}
+public_timeline_yscrollbar.pack('side' => 'right')
+
 client = Mastodon::REST::Client.new(base_url: ENV["MASTODON_URL"], bearer_token: ENV["MASTODON_TOKEN"])
 mastodon = MastodonAPI.new(client)
 
