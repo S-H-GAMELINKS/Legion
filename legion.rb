@@ -61,13 +61,13 @@ mastodon = MastodonAPI.new(client)
 stream = Mastodon::Streaming::Client.new(base_url: ENV["MASTODON_URL"], bearer_token: ENV["MASTODON_TOKEN"])
 streaming = MastodonStreaming.new(stream)
 
-var = TkVariable.new('')
+visibility = TkVariable.new('public')
 
-text = TkText.new(tootFrame, 'width' => '30', 'height'=> '30')
+text = TkText.new(tootFrame, 'width' => '50', 'height'=> '30')
 text.pack('side' => 'top', 'fill' => 'both')
 
 button = TkButton.new(tootFrame, 'text' => 'toot', 
-		       'command' => proc{mastodon.Toot(text.value);text.value=""})
+		       'command' => proc{mastodon.Toot(text.value, visibility.value);text.value=""})
 button.pack('side' => 'left', 'fill' => 'both')
 
 mediabutton = TkButton.new(tootFrame, 'text' => 'media', 
