@@ -29,6 +29,10 @@ home_timeline_yscrollbar = TkScrollbar.new(htl_list) {orient "vertical"; command
 htl_list['yscrollcommand'] = proc{|*args| home_timeline_yscrollbar.set(*args);}
 home_timeline_yscrollbar.pack('side' => 'right', 'fill' => 'both', 'ipadx' => '5', 'ipady' => '170')
 
+home_timeline_xscrollbar = TkScrollbar.new(htl_list) {orient "horizontal"; command proc{|*args| htl_list.xview(*args);} }
+htl_list['xscrollcommand'] = proc{|*args| home_timeline_xscrollbar.set(*args);}
+home_timeline_xscrollbar.pack('side' => 'bottom', 'fill' => 'both')
+
 local_timeline = TkFrame.new(window)
 local_timeline.pack('side' => 'left', 'fill' => 'both')
 
@@ -42,6 +46,10 @@ local_timeline_yscrollbar = TkScrollbar.new(ltl_list) {orient "vertical"; comman
 ltl_list['yscrollcommand'] = proc{|*args| local_timeline_yscrollbar.set(*args);}
 local_timeline_yscrollbar.pack('side' => 'right', 'fill' => 'both', 'ipadx' => '5', 'ipady' => '170')
 
+local_timeline_xscrollbar = TkScrollbar.new(ltl_list) {orient "horizontal"; command proc{|*args| ltl_list.xview(*args);} }
+ltl_list['xscrollcommand'] = proc{|*args| local_timeline_xscrollbar.set(*args);}
+local_timeline_xscrollbar.pack('side' => 'bottom', 'fill' => 'both')
+
 public_timeline = TkFrame.new(window)
 public_timeline.pack('side' => 'left', 'fill' => 'both')
 
@@ -54,6 +62,10 @@ ftl_list.pack('fill' => 'both')
 public_timeline_yscrollbar = TkScrollbar.new(ftl_list) {orient "vertical"; command proc{|*args| ftl_list.yview(*args);} }
 ftl_list['yscrollcommand'] = proc{|*args| public_timeline_yscrollbar.set(*args);}
 public_timeline_yscrollbar.pack('side' => 'right', 'fill' => 'both', 'ipadx' => '5', 'ipady' => '170')
+
+public_timeline_xscrollbar = TkScrollbar.new(ftl_list) {orient "horizontal"; command proc{|*args| ftl_list.xview(*args);} }
+ftl_list['xscrollcommand'] = proc{|*args| public_timeline_xscrollbar.set(*args);}
+public_timeline_xscrollbar.pack('side' => 'bottom', 'fill' => 'both')
 
 client = Mastodon::REST::Client.new(base_url: ENV["MASTODON_URL"], bearer_token: ENV["MASTODON_TOKEN"])
 mastodon = MastodonAPI.new(client)
