@@ -25,6 +25,10 @@ htl_label.pack('side' => 'top', 'fill' => 'both')
 htl_list = TkListbox.new(home_timeline, 'height' => 25, 'selectmode' => 'multiple')
 htl_list.pack('fill' => 'both')
 
+home_timeline_yscrollbar = TkScrollbar.new(htl_list) {orient "vertical"; command proc{|*args| htl_list.yview(*args);} }
+htl_list['yscrollcommand'] = proc{|*args| home_timeline_yscrollbar.set(*args);}
+home_timeline_yscrollbar.pack('side' => 'right')
+
 local_timeline = TkFrame.new(window)
 local_timeline.pack('side' => 'left', 'fill' => 'both')
 
