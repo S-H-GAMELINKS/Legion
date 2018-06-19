@@ -74,6 +74,22 @@ mediabutton = TkButton.new(tootFrame, 'text' => 'media',
 		       'command' => proc{mastodon.MediaUpload(Tk.getOpenFile)})
 mediabutton.pack('side' => 'left', 'fill' => 'both')
 
+public_button = TkButton.new(tootFrame, 'text' => 'public', 
+		       'command' => proc{visibility.value = 'public' })
+public_button.pack('side' => 'left', 'fill' => 'both')
+
+unlisted_button = TkButton.new(tootFrame, 'text' => 'unlisted', 
+		       'command' => proc{visibility.value = 'unlisted' })
+unlisted_button.pack('side' => 'left', 'fill' => 'both')
+
+private_button = TkButton.new(tootFrame, 'text' => 'private', 
+		       'command' => proc{visibility.value = 'private' })
+private_button.pack('side' => 'left', 'fill' => 'both')
+
+direct_button = TkButton.new(tootFrame, 'text' => 'direct', 
+		       'command' => proc{visibility.value = 'direct' })
+direct_button.pack('side' => 'left', 'fill' => 'both')
+
 quitbutton = TkButton.new(tootFrame, 'text' => 'quit',
 		  'command' => proc{exit})
 quitbutton.pack('side' => 'right', 'fill' => 'both')
