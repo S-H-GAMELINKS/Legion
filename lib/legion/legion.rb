@@ -19,11 +19,35 @@ tootFrame.pack('side' => 'left', 'fill' => 'both')
 home_timeline = Timeline.new(window, "ホームタイムライン")
 home_timeline.set
 
+home_timeline_yscrollbar = TkScrollbar.new(home_timeline.list) {orient "vertical"; command proc{|*args| home_timeline.list.yview(*args);} }
+home_timeline.list['yscrollcommand'] = proc{|*args| home_timeline_yscrollbar.set(*args);}
+home_timeline_yscrollbar.pack('side' => 'right', 'fill' => 'both', 'ipadx' => '5', 'ipady' => '170')
+
+home_timeline_xscrollbar = TkScrollbar.new(home_timeline.list) {orient "horizontal"; command proc{|*args| home_timeline.list.xview(*args);} }
+home_timeline.list['xscrollcommand'] = proc{|*args| home_timeline_xscrollbar.set(*args);}
+home_timeline_xscrollbar.pack('side' => 'bottom', 'fill' => 'both')
+
 local_timeline = Timeline.new(window, "ローカルタイムライン")
 local_timeline.set
 
+local_timeline_yscrollbar = TkScrollbar.new(local_timeline.list) {orient "vertical"; command proc{|*args| local_timeline.list.yview(*args);} }
+local_timeline.list['yscrollcommand'] = proc{|*args| local_timeline_yscrollbar.set(*args);}
+local_timeline_yscrollbar.pack('side' => 'right', 'fill' => 'both', 'ipadx' => '5', 'ipady' => '170')
+
+local_timeline_xscrollbar = TkScrollbar.new(local_timeline.list) {orient "horizontal"; command proc{|*args| local_timeline.list.xview(*args);} }
+local_timeline.list['xscrollcommand'] = proc{|*args| local_timeline_xscrollbar.set(*args);}
+local_timeline_xscrollbar.pack('side' => 'bottom', 'fill' => 'both')
+
 public_timeline = Timeline.new(window, "連合タイムライン")
 public_timeline.set
+
+public_timeline_yscrollbar = TkScrollbar.new(public_timeline.list) {orient "vertical"; command proc{|*args| public_timeline.list.yview(*args);} }
+public_timeline.list['yscrollcommand'] = proc{|*args| public_timeline_yscrollbar.set(*args);}
+public_timeline_yscrollbar.pack('side' => 'right', 'fill' => 'both', 'ipadx' => '5', 'ipady' => '170')
+
+public_timeline_xscrollbar = TkScrollbar.new(public_timeline.list) {orient "horizontal"; command proc{|*args| public_timeline.list.xview(*args);} }
+public_timeline.list['xscrollcommand'] = proc{|*args| public_timeline_xscrollbar.set(*args);}
+public_timeline_xscrollbar.pack('side' => 'bottom', 'fill' => 'both')
 
 client = Mastodon::REST::Client.new(base_url: ENV["MASTODON_URL"], bearer_token: ENV["MASTODON_TOKEN"])
 mastodon = MastodonAPI.new(client)

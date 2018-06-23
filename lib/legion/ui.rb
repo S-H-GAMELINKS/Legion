@@ -36,7 +36,5 @@ class Timeline
         self.timeline_pack
         self.label_pack
         self.list_pack
-        self.y_scrollbar
-        self.x_scrollbar
     end
 end
