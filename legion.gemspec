@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "legion/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "Legion"
+  spec.name          = "legion_mastodon_client"
   spec.version       = Legion::VERSION
   spec.authors       = ["S-H-GAMELINKS"]
   spec.email         = ["gamelinks007@gmail.com"]
