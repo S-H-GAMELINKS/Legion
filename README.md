@@ -12,6 +12,7 @@ gem install legion_mastodon_client
 
 そして、以下のファイルを作成します。
 
+legion.rb
 ``` ruby:legion.rb
 require 'bundler/setup'
 Bundler.require(:default)
@@ -21,6 +22,7 @@ require 'legion'
 Legion.exec
 ```
 
+Gemfile
 ``` ruby:Gemfile
 source "https://rubygems.org"
 
