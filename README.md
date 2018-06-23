@@ -12,7 +12,7 @@ gem install legion_mastodon_client
 
 そして、以下のファイルを作成します。
 
-```
+```ruby:legion.rb
 require 'bundler/setup'
 Bundler.require(:default)
 
@@ -21,7 +21,7 @@ require 'legion'
 Legion.exec
 ```
 
-```
+```ruby:Gemfile
 source "https://rubygems.org"
 
 gem 'legion_mastodon_client', '~> 0.1.0'
@@ -41,7 +41,7 @@ bundle install
 
 後は、`.env` を作成し、必要な環境変数を記入していくだけです。
 
-```
+```:.env
 MASTODON_URL=<インスタンスのURL>
 MASTODON_TOKEN=<インスタンスで発行したアクセストークン>
 ```
