@@ -30,5 +30,13 @@ class Timeline
 	def x_scrollbar
 		@list['xscrollcommand'] = proc{|*args| @timeline_xscrollbar.set(*args);}
 		return @timeline_xscrollbar.pack('side' => 'bottom', 'fill' => 'both')
-	end
+    end
+    
+    def set
+        self.timeline_pack
+        self.label_pack
+        self.list_pack
+        self.y_scrollbar
+        self.x_scrollbar
+    end
 end

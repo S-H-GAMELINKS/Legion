@@ -17,20 +17,13 @@ tootFrame = TkFrame.new(window)
 tootFrame.pack('side' => 'left', 'fill' => 'both')
 
 home_timeline = Timeline.new(window, "ホームタイムライン")
-home_timeline.timeline_pack
-home_timeline.label_pack
-home_timeline.list_pack
-home_timeline.y_scrollbar
-home_timeline.x_scrollbar
+home_timeline.set
 
 local_timeline = Timeline.new(window, "ローカルタイムライン")
-home_timeline.timeline_pack
-home_timeline.label_pack
-home_timeline.list_pack
-home_timeline.y_scrollbar
-home_timeline.x_scrollbar
+local_timeline.set
 
 public_timeline = Timeline.new(window, "連合タイムライン")
+public_timeline.set
 
 client = Mastodon::REST::Client.new(base_url: ENV["MASTODON_URL"], bearer_token: ENV["MASTODON_TOKEN"])
 mastodon = MastodonAPI.new(client)
