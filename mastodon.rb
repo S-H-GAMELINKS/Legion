@@ -54,4 +54,19 @@ class MastodonStreaming
             end
         end
     end
+
+    def Timeline(timeline)
+
+        case timeline[0]
+
+        when 1
+            self.HomeTimeline(timeline[1], timeline[2])
+
+        when 2
+            self.LocalTimeline(timeline[1], timeline[2])
+
+        when 3
+            self.PublicTimeline(timeline[1], timeline[2])
+        end
+    end
 end
