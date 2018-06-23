@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require 'legion'
+Dotenv.load
+
+puts legion.exec

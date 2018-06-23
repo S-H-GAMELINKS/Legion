@@ -1,11 +1,10 @@
-require 'bundler/setup'
-Bundler.require(:default)
-
 require 'mastodon'
 require 'highline/import'
 require 'dotenv'
 require 'tk'
 require_relative 'mastodon'
+
+def LegionLoop
 
 window = TkToplevel.new do   #タイトルバーの表示
     title( "Legion" )
@@ -121,4 +120,5 @@ loop do
 	Parallel.each([[1, home_timeline, htl_list], [2, local_timeline, ltl_list], [3, public_timeline, ftl_list]], in_threads: 3) do |call|
 		streaming.Timeline(call)
 	end
+end
 end
