@@ -32,25 +32,25 @@ class MastodonStreaming
         @stream = stream
     end
 
-    def HomeTimeline(window)
+    def HomeTimeline(window, list)
         @stream.user() do |toot|
             message = Nokogiri::HTML.parse(toot.content, nil, nil).search('p')
-            return message.text
+            list.insert('0', message.text)
         end
     end
 
-    def PublicTimeline(window)
+    def PublicTimeline(window, list)
         @stream.firehose() do |toot|
             message = Nokogiri::HTML.parse(toot.content, nil, nil).search('p')
-            return message.text
+            list.insert('0', message.text)
         end
     end
 
-    def LocalTimeline(window)
+    def LocalTimeline(window, list)
         @stream.firehose() do |toot|
             if toot.uri.to_s =~ /#{ENV['MASTODON_URL'].to_s}/ then
                 message = Nokogiri::HTML.parse(toot.content, nil, nil).search('p')
-                return message.text
+                list.insert('0', message.text)
             end
         end
     end
