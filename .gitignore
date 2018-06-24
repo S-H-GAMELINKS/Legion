@@ -10,3 +10,8 @@
 
 # rspec failure tracking
 .rspec_status
+
+/lib/legion/.env
+/lib/legion/test.rb
+/lib/legion/Gemfile
+/lib/legion/Gemfile.lock
