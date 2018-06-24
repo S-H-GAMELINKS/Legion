@@ -1,6 +1,5 @@
 
 class Timeline
-    attr_accessor :list
 
 	def initialize(window, timeline_name)
 		@timeline				= TkFrame.new(window)
