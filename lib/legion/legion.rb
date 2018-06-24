@@ -7,7 +7,7 @@ require_relative 'ui'
 
 def LegionLoop
 
-window = TkToplevel.new do   #タイトルバーの表示
+window = TkRoot.new do   #タイトルバーの表示
     title( "Legion" )
 end
 
@@ -99,9 +99,14 @@ quitbutton = TkButton.new(tootFrame, 'text' => 'quit',
 		  'command' => proc{exit})
 quitbutton.pack('side' => 'right', 'fill' => 'both')
 
-loop do
-	Parallel.each([[1, home_timeline, home_timeline.list], [2, local_timeline, local_timeline.list], [3, public_timeline, public_timeline.list]], in_threads: 3) do |call|
-		streaming.Timeline(call)
+t1 = Thread.start {
+	loop do
+		Parallel.each([[1, home_timeline, home_timeline.list], [2, local_timeline, local_timeline.list], [3, public_timeline, public_timeline.list]], in_threads: 3) do |call|
+			streaming.Timeline(call)
+		end
 	end
-end
+}
+
+Tk.mainloop
+
 end
