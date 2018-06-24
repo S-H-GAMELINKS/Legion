@@ -12,7 +12,7 @@ GIT
 PATH
   remote: .
   specs:
-    legion (0.1.0)
+    legion_mastodon_client (0.1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -35,6 +35,8 @@ GEM
     http-form_data (2.1.1)
     http_parser.rb (0.6.0)
     mini_portile2 (2.3.0)
+    nokogiri (1.8.2)
+      mini_portile2 (~> 2.3.0)
     nokogiri (1.8.2-x86-mingw32)
       mini_portile2 (~> 2.3.0)
     oj (3.6.2)
@@ -55,24 +57,28 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.7.0)
     rspec-support (3.7.1)
+    tk (0.2.0)
     unf (0.1.4)
       unf_ext
+    unf_ext (0.0.7.5)
     unf_ext (0.0.7.5-x86-mingw32)
 
 PLATFORMS
+  ruby
   x86-mingw32
 
 DEPENDENCIES
   bundler (~> 1.16)
   dotenv
   highline
-  legion!
+  legion_mastodon_client!
   mastodon-api!
   nokogiri
   parallel
   rake (~> 10.0)
   rmagick
   rspec (~> 3.0)
+  tk
 
 BUNDLED WITH
    1.16.2

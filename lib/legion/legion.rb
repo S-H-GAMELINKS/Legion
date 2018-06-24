@@ -7,7 +7,7 @@ require_relative 'ui'
 
 def LegionLoop
 
-window = TkToplevel.new do   #タイトルバーの表示
+window = TkRoot.new do   #タイトルバーの表示
     title( "Legion" )
 end
 
@@ -55,9 +55,14 @@ public_timeline_xscrollbar = TkScrollbar.new(public_timeline.list) {orient "hori
 public_timeline.list['xscrollcommand'] = proc{|*args| public_timeline_xscrollbar.set(*args);}
 public_timeline_xscrollbar.pack('side' => 'bottom', 'fill' => 'both')
 
-loop do
-	Parallel.each([[1, home_timeline, home_timeline.list], [2, local_timeline, local_timeline.list], [3, public_timeline, public_timeline.list]], in_threads: 3) do |call|
-		streaming.Timeline(call)
-	end
-end
+
+t1 = Thread.start {
+	loop do
+		Parallel.each([[1, home_timeline, home_timeline.list], [2, local_timeline, local_timeline.list], [3, public_timeline, public_timeline.list]], in_threads: 3) do |call|
+			streaming.Timeline(call)
+		end
+}
+
+Tk.mainloop
+
 end

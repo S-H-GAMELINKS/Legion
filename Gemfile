@@ -8,6 +8,7 @@ gem "highline"
 gem 'nokogiri'
 gem 'rmagick'
 gem 'parallel'
+gem 'tk'
 
 # Specify your gem's dependencies in legion.gemspec
 gemspec
