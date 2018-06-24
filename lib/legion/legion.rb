@@ -61,6 +61,7 @@ t1 = Thread.start {
 		Parallel.each([[1, home_timeline, home_timeline.list], [2, local_timeline, local_timeline.list], [3, public_timeline, public_timeline.list]], in_threads: 3) do |call|
 			streaming.Timeline(call)
 		end
+	end
 }
 
 Tk.mainloop
