@@ -35,14 +35,14 @@ class MastodonStreaming
     def HomeTimeline(window, list)
         @stream.user() do |toot|
             message = Nokogiri::HTML.parse(toot.content, nil, nil).search('p')
-            list.insert('0', "#{toot.account.username} さん : #{message.text}")
+            list.insert('0', "#{toot.account.display_name} さん : #{message.text}")
         end
     end
 
     def PublicTimeline(window, list)
         @stream.firehose() do |toot|
             message = Nokogiri::HTML.parse(toot.content, nil, nil).search('p')
-            list.insert('0', "#{toot.account.username} さん : #{message.text}")
+            list.insert('0', "#{toot.account.display_name} さん : #{message.text}")
         end
     end
 
@@ -50,7 +50,7 @@ class MastodonStreaming
         @stream.firehose() do |toot|
             if toot.uri.to_s =~ /#{ENV['MASTODON_URL'].to_s}/ then
                 message = Nokogiri::HTML.parse(toot.content, nil, nil).search('p')
-                list.insert('0', "#{toot.account.username} さん : #{message.text}")
+                list.insert('0', "#{toot.account.display_name} さん : #{message.text}")
             end
         end
     end
