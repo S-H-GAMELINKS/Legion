@@ -59,7 +59,25 @@ class TootFrame
 		@mediabutton.pack('side' => 'left', 'fill' => 'both')
 	end
 
-	def VisibilityMenu_pack(window)
+	def AccountMenu(window)
+
+		Dotenv.load
+
+		menu = TkMenu.new(window)
+		url = ENV["MASTODON_URL"].split(",")
+
+		for i in 0...url.count do
+			menu.add('command',
+    	    	    'label'     => "#{url[i]}",
+        	    	'command'   => proc{streaming.num = i;},
+					'underline' => 0)
+		end
+
+		return menu
+	end
+
+	def VisibilityMenu(window)
+
 		menu = TkMenu.new(window)
 
 		for i in 0...@visibility_item.count do
@@ -69,12 +87,16 @@ class TootFrame
 					'underline' => 0)
 		end
 
-		menu_bar = TkMenu.new
-		menu_bar.add('cascade',
-            		'menu'  => menu,
-             		'label' => 'Visibility')
+		return menu
+	end
 
-		window.menu(menu_bar)
+	def MenuBar_pack(window)
+		menubar = TkMenu.new(window)
+
+		menubar.add('cascade', 'menu' => self.AccountMenu(window), 'label' => 'Accounts')
+		menubar.add('cascade', 'menu' => self.VisibilityMenu(window), 'label' => 'Visibility')
+
+		window.menu(menubar)
 	end
 
 	def NsfwButton_pack
@@ -93,7 +115,7 @@ class TootFrame
 		self.TootFrame_pack
 		self.Text_pack
 		self.Button_pack
-		self.VisibilityMenu_pack(window)
+		self.MenuBar_pack(window)
 		self.NsfwButton_pack
 		self.CwButton_pack
 		self.Quitbutton_pack
