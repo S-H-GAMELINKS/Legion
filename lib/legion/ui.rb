@@ -37,10 +37,7 @@ class TootFrame
 		@text = text = TkText.new(@tootFrame, 'width' => '50', 'height'=> '30')
 		@button = TkButton.new(@tootFrame, 'text' => 'toot', 'command' => proc{mastodon.Toot(@text.value, @visibility.value, @sensitive.value, @spoiler_text.value);@text.value=""})
 		@mediabutton = TkButton.new(@tootFrame, 'text' => 'media', 'command' => proc{mastodon.MediaUpload(Tk.getOpenFile)})
-		@public_button = TkButton.new(@tootFrame, 'text' => 'public', 'command' => proc{@visibility.value = 'public' })
-		@unlisted_button = TkButton.new(@tootFrame, 'text' => 'unlisted', 'command' => proc{@visibility.value = 'unlisted' })
-		@private_button = TkButton.new(@tootFrame, 'text' => 'private', 'command' => proc{@visibility.value = 'private' })
-		@direct_button = TkButton.new(@tootFrame, 'text' => 'direct', 'command' => proc{@visibility.value = 'direct' })
+		@visibility_item = ['public', 'unlisted', 'private', 'direct']
 		@nsfw_button = TkButton.new(@tootFrame, 'text' => 'nsfw', 'command' => proc{@sensitive.value == 'true' ? @sensitive.value = 'false' : @sensitive.value = 'true' })
 		@cw_button = TkButton.new(@tootFrame, 'text' => 'cw', 'command' => proc{@spoiler_text.value == "" ? @spoiler_text.value = "Contents Warning!" : @spoiler_text.value = ""; @sensitive.value == 'true' ? @sensitive.value = 'false' : @sensitive.value = 'true' })
 		@quitbutton = TkButton.new(@tootFrame, 'text' => 'quit', 'command' => proc{exit})
@@ -60,6 +57,24 @@ class TootFrame
 
 	def MediaButton_pack
 		@mediabutton.pack('side' => 'left', 'fill' => 'both')
+	end
+
+	def VisibilityMenu_pack(window)
+		menu = TkMenu.new(window)
+
+		for i in 0...@visibility_item.count do
+			menu.add('command',
+    	        	'label'     => "#{@visibility_item[i]}",
+        	    	'command'   => proc{@Visibility = @visibility_item[i];},
+					'underline' => 0)
+		end
+
+		menu_bar = TkMenu.new
+		menu_bar.add('cascade',
+            		'menu'  => menu,
+             		'label' => 'Visibility')
+
+		window.menu(menu_bar)
 	end
 
 	def PubilcButton_pack
@@ -94,11 +109,6 @@ class TootFrame
 		self.TootFrame_pack
 		self.Text_pack
 		self.Button_pack
-		self.PubilcButton_pack
-		self.MediaButton_pack
-		self.UnlistedButton_pack
-		self.PrivateButton_pack
-		self.DirectButton_pack
 		self.NsfwButton_pack
 		self.CwButton_pack
 		self.Quitbutton_pack

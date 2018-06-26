@@ -75,6 +75,7 @@ menu_bar.add('cascade',
 window.menu(menu_bar)
 
 tootFrame = TootFrame.new(window, mastodon)
+tootFrame.VisibilityMenu_pack(window)
 tootFrame.set
 
 home_timeline = Timeline.new(window, "ホームタイムライン")
