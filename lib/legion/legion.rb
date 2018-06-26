@@ -18,7 +18,7 @@ client = Array.new
 url = ENV["MASTODON_URL"].split(",")
 token = ENV["MASTODON_TOKEN"].split(",")
 
-for i in 0..url.count do 
+for i in 0...url.count	 do 
 	client[i] = Mastodon::REST::Client.new(base_url: url[i], bearer_token: token[i])
 end
 
