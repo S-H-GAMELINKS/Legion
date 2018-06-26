@@ -60,8 +60,8 @@ end
 
 menu_bar = TkMenu.new
 menu_bar.add('cascade',
-             'menu'  => menu,
-             'label' => "Account")
+            'menu'  => menu,
+            'label' => "Account")
 
 window.menu(menu_bar)
 
