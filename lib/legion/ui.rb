@@ -105,10 +105,11 @@ class TootFrame
 		@quitbutton.pack('side' => 'right', 'fill' => 'both')
 	end
 
-	def set
+	def set(window)
 		self.TootFrame_pack
 		self.Text_pack
 		self.Button_pack
+		self.VisibilityMenu_pack(window)
 		self.NsfwButton_pack
 		self.CwButton_pack
 		self.Quitbutton_pack
