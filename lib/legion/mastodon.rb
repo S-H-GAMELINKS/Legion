@@ -32,7 +32,7 @@ end
 class MastodonStreaming
 
     def initialize(stream)
-        @stream = stream
+        @stream = stream[0]
     end
 
     def HomeTimeline(window, list)

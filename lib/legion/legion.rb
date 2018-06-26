@@ -28,7 +28,17 @@ end
 
 mastodon = ClientInit()
 
-stream = Mastodon::Streaming::Client.new(base_url: ENV["MASTODON_URL"], bearer_token: ENV["MASTODON_TOKEN"])
+Dotenv.load
+
+stream = Array.new
+
+url = ENV["MASTODON_URL"].split(",")
+token = ENV["MASTODON_TOKEN"].split(",")
+
+for i in 0...url.count do
+	stream[i] = Mastodon::Streaming::Client.new(base_url: url[i], bearer_token: token[i])
+end
+
 streaming = MastodonStreaming.new(stream)
 
 tootFrame = TootFrame.new(window, mastodon)
