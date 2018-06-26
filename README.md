@@ -26,7 +26,7 @@ Gemfile
 ``` ruby:Gemfile
 source "https://rubygems.org"
 
-gem 'legion_mastodon_client', '~> 0.1.0'
+gem 'legion_mastodon_client', '~> 0.1.1'
 gem 'mastodon-api', git: 'https://github.com/tootsuite/mastodon-api.git', ref: '189deb8'
 gem 'dotenv'
 gem "highline"
@@ -42,6 +42,7 @@ bundle install
 ```
 
 後は、`.env` を作成し、必要な環境変数を記入していくだけです。
+なお、マルチポスト/マルチアカウント対応をされたい方は , で区切ってURLとトークンを貼り付けてください
 
 ``` :.env
 MASTODON_URL=<インスタンスのURL>
