@@ -32,7 +32,7 @@ def StreamInit
 		stream[i] = Mastodon::Streaming::Client.new(base_url: url[i], bearer_token: token[i])
 	end
 	
-	streaming = MastodonStreaming.new(stream)
+	streaming = MastodonStreaming.new(stream, url)
 end
 
 def LegionLoop
@@ -43,6 +43,36 @@ end
 
 mastodon = ClientInit()
 streaming = StreamInit()
+
+menu_click = Proc.new {
+   Tk.messageBox(
+      'type'    => "ok",  
+      'icon'    => "info",
+      'title'   => "Title",
+      'message' => "Message"
+   )
+}
+
+menu = TkMenu.new(window)
+
+Dotenv.load
+
+menu = TkMenu.new(window)
+url = ENV["MASTODON_URL"].split(",")
+
+for i in 0...url.count do
+	menu.add('command',
+    	        'label'     => "#{url[i]}",
+        	    'command'   => proc{streaming.num = i;},
+				'underline' => 0)
+end
+
+menu_bar = TkMenu.new
+menu_bar.add('cascade',
+             'menu'  => menu,
+             'label' => "Account")
+
+window.menu(menu_bar)
 
 tootFrame = TootFrame.new(window, mastodon)
 tootFrame.set
