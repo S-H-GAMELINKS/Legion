@@ -5,24 +5,28 @@ require 'tk'
 require_relative 'mastodon'
 require_relative 'ui'
 
+def ClientInit
+	Dotenv.load
+
+	client = Array.new
+
+	url = ENV["MASTODON_URL"].split(",")
+	token = ENV["MASTODON_TOKEN"].split(",")
+
+	for i in 0...url.count	 do 
+		client[i] = Mastodon::REST::Client.new(base_url: url[i], bearer_token: token[i])
+	end
+
+	mastodon = MastodonAPI.new(client)
+end
+
 def LegionLoop
 
 window = TkRoot.new do   #タイトルバーの表示
     title( "Legion" )
 end
 
-Dotenv.load
-
-client = Array.new
-
-url = ENV["MASTODON_URL"].split(",")
-token = ENV["MASTODON_TOKEN"].split(",")
-
-for i in 0...url.count	 do 
-	client[i] = Mastodon::REST::Client.new(base_url: url[i], bearer_token: token[i])
-end
-
-mastodon = MastodonAPI.new(client)
+mastodon = ClientInit()
 
 stream = Mastodon::Streaming::Client.new(base_url: ENV["MASTODON_URL"], bearer_token: ENV["MASTODON_TOKEN"])
 streaming = MastodonStreaming.new(stream)
