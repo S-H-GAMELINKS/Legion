@@ -77,22 +77,6 @@ class TootFrame
 		window.menu(menu_bar)
 	end
 
-	def PubilcButton_pack
-		@public_button.pack('side' => 'left', 'fill' => 'both')
-	end
-
-	def UnlistedButton_pack
-		@unlisted_button.pack('side' => 'left', 'fill' => 'both')
-	end
-
-	def PrivateButton_pack
-		@private_button.pack('side' => 'left', 'fill' => 'both')
-	end
-
-	def DirectButton_pack
-		@direct_button.pack('side' => 'left', 'fill' => 'both')
-	end
-
 	def NsfwButton_pack
 		@nsfw_button.pack('side' => 'left', 'fill' => 'both')
 	end
