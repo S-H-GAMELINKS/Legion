@@ -20,6 +20,21 @@ def ClientInit
 	mastodon = MastodonAPI.new(client)
 end
 
+def StreamInit
+	Dotenv.load
+
+	stream = Array.new
+	
+	url = ENV["MASTODON_URL"].split(",")
+	token = ENV["MASTODON_TOKEN"].split(",")
+	
+	for i in 0...url.count do
+		stream[i] = Mastodon::Streaming::Client.new(base_url: url[i], bearer_token: token[i])
+	end
+	
+	streaming = MastodonStreaming.new(stream)
+end
+
 def LegionLoop
 
 window = TkRoot.new do   #タイトルバーの表示
@@ -27,19 +42,7 @@ window = TkRoot.new do   #タイトルバーの表示
 end
 
 mastodon = ClientInit()
-
-Dotenv.load
-
-stream = Array.new
-
-url = ENV["MASTODON_URL"].split(",")
-token = ENV["MASTODON_TOKEN"].split(",")
-
-for i in 0...url.count do
-	stream[i] = Mastodon::Streaming::Client.new(base_url: url[i], bearer_token: token[i])
-end
-
-streaming = MastodonStreaming.new(stream)
+streaming = StreamInit()
 
 tootFrame = TootFrame.new(window, mastodon)
 tootFrame.set
