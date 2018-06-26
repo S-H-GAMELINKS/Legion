@@ -44,15 +44,6 @@ end
 mastodon = ClientInit()
 streaming = StreamInit()
 
-menu_click = Proc.new {
-   Tk.messageBox(
-      'type'    => "ok",  
-      'icon'    => "info",
-      'title'   => "Title",
-      'message' => "Message"
-   )
-}
-
 menu = TkMenu.new(window)
 
 Dotenv.load
