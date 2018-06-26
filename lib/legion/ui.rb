@@ -65,7 +65,7 @@ class TootFrame
 		for i in 0...@visibility_item.count do
 			menu.add('command',
     	        	'label'     => "#{@visibility_item[i]}",
-        	    	'command'   => proc{@Visibility = @visibility_item[i];},
+        	    	'command'   => proc{@visibility.value = @visibility_item[i];},
 					'underline' => 0)
 		end
 
