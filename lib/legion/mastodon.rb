@@ -8,24 +8,28 @@ class MastodonAPI
         @client = client
         @timeline = Hash.new
         @avatar = Array.new
-        @media_id = nil
+        @media_id = Array.new
     end
 
     def MediaUpload(file_path)
 
         if file_path != nil then
-            @media_id = @client.upload_media(file_path).id
+            for i in 0...@client.count do
+                @media_id[i] = @client[i].upload_media(file_path).id
+            end
         else
-            @media_id = nil
+            @media_id.clear
         end
     end
 
     def Toot(message, visibility, sensitive, spoiler_text)
         message += "\n #Legion"
 
-        @client.each do |client|
-            response = client.create_status(message.encode("UTF-8"), :media_ids => @media_id, :visibility => visibility, :sensitive => sensitive, :spoiler_text => spoiler_text)
+        for i in 0...@client.count do
+            response = @client[i].create_status(message.encode("UTF-8"), :media_ids => @media_id[i], :visibility => visibility, :sensitive => sensitive, :spoiler_text => spoiler_text)
         end
+
+        @media_id.clear
     end
 end
 
