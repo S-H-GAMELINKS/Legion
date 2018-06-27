@@ -76,10 +76,9 @@ class TootFrame
 
 		menu = TkMenu.new(window)
 
-		menu.add('command', 'label'     => "#{@visibility[0]}", 'command'   => proc{puts @options[:visibility] = @visibility[0];})
-		menu.add('command', 'label'     => "#{@visibility[1]}", 'command'   => proc{puts @options[:visibility] = @visibility[1];})
-		menu.add('command', 'label'     => "#{@visibility[2]}", 'command'   => proc{puts @options[:visibility] = @visibility[2];})
-		menu.add('command', 'label'     => "#{@visibility[3]}", 'command'   => proc{puts @options[:visibility] = @visibility[3];})
+		@visibility.each do |visibility|
+			menu.add('command', 'label' => "#{visibility}", 'command' => proc{@options[:visibility] = visibility;})
+		end
 
 		return menu
 	end
