@@ -7,7 +7,6 @@ class MastodonAPI
     def initialize(client)
         @client = client
         @timeline = Hash.new
-        @avatar = Array.new
         @media_id = Array.new
     end
 
