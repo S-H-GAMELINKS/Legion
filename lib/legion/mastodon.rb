@@ -22,11 +22,13 @@ class MastodonAPI
         end
     end
 
-    def Toot(message, visibility, sensitive, spoiler_text)
+    def Toot(message, options)
         message += "\n #Legion"
 
         for i in 0...@client.count do
-            response = @client[i].create_status(message.encode("UTF-8"), :media_ids => @media_id[i], :visibility => visibility, :sensitive => sensitive, :spoiler_text => spoiler_text)
+            response = @client[i].create_status(message.encode("UTF-8"), :media_ids => @media_id[i],
+                                                 :visibility => options[:visibility], :sensitive => options[:sensitive], 
+                                                 :spoiler_text => options[:spoiler_text])
         end
 
         @media_id.clear
