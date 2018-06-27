@@ -63,9 +63,11 @@ class TootFrame
 
 		menu = TkMenu.new(window)
 		url = ENV["MASTODON_URL"].split(",")
+		procArray = Array.new
 
-		menu.add('command', 'label'     => "#{url[0]}", 'command'   => proc{streaming.num = 0;}, 'underline' => 0)
-		menu.add('command', 'label'     => "#{url[1]}", 'command'   => proc{streaming.num = 1;}, 'underline' => 0)
+		url.each do |address|
+			menu.add('command', 'label' => "#{address}", 'command' => proc{streaming.num = url.index(address);}, 'underline' => 0)
+		end
 
 		return menu
 	end
