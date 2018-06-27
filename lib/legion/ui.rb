@@ -31,13 +31,13 @@ class TootFrame
 
 	def initialize(window, mastodon)
 		@tootFrame = TkFrame.new(window)
-		@visibility = TkVariable.new('public')
+		@options = Hash[:visibility => "public", :sensitive => 'false', :spoiler_text => '']
+		@visibility = ['public', 'unlisted', 'private', 'direct']
 		@sensitive = TkVariable.new('false')
 		@spoiler_text = TkVariable.new("")
 		@text = text = TkText.new(@tootFrame, 'width' => '50', 'height'=> '30')
 		@button = TkButton.new(@tootFrame, 'text' => 'toot', 'command' => proc{mastodon.Toot(@text.value, @visibility.value, @sensitive.value, @spoiler_text.value);@text.value=""})
 		@mediabutton = TkButton.new(@tootFrame, 'text' => 'media', 'command' => proc{mastodon.MediaUpload(Tk.getOpenFile)})
-		@visibility_item = ['public', 'unlisted', 'private', 'direct']
 		@nsfw_button = TkButton.new(@tootFrame, 'text' => 'nsfw', 'command' => proc{@sensitive.value == 'true' ? @sensitive.value = 'false' : @sensitive.value = 'true' })
 		@cw_button = TkButton.new(@tootFrame, 'text' => 'cw', 'command' => proc{@spoiler_text.value == "" ? @spoiler_text.value = "Contents Warning!" : @spoiler_text.value = ""; @sensitive.value == 'true' ? @sensitive.value = 'false' : @sensitive.value = 'true' })
 		@quitbutton = TkButton.new(@tootFrame, 'text' => 'quit', 'command' => proc{exit})
@@ -80,12 +80,10 @@ class TootFrame
 
 		menu = TkMenu.new(window)
 
-		for i in 0...@visibility_item.count do
-			menu.add('command',
-    	        	'label'     => "#{@visibility_item[i]}",
-        	    	'command'   => proc{@visibility.value = @visibility_item[i];},
-					'underline' => 0)
-		end
+		menu.add('command', 'label'     => "#{@visibility[0]}", 'command'   => proc{puts @options[:visibility] = @visibility[0];})
+		menu.add('command', 'label'     => "#{@visibility[1]}", 'command'   => proc{puts @options[:visibility] = @visibility[1];})
+		menu.add('command', 'label'     => "#{@visibility[2]}", 'command'   => proc{puts @options[:visibility] = @visibility[2];})
+		menu.add('command', 'label'     => "#{@visibility[3]}", 'command'   => proc{puts @options[:visibility] = @visibility[3];})
 
 		return menu
 	end
