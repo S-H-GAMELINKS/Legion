@@ -107,6 +107,7 @@ class TootFrame
 		self.TootFrame_pack
 		self.Text_pack
 		self.Button_pack
+		self.MediaButton_pack
 		self.MenuBar_pack(window, streaming)
 		self.NsfwButton_pack
 		self.CwButton_pack
