@@ -36,7 +36,7 @@ class TootFrame
 		@sensitive = TkVariable.new('false')
 		@spoiler_text = TkVariable.new("")
 		@text = text = TkText.new(@tootFrame, 'width' => '50', 'height'=> '30')
-		@button = TkButton.new(@tootFrame, 'text' => 'toot', 'command' => proc{mastodon.Toot(@text.value, @visibility.value, @sensitive.value, @spoiler_text.value);@text.value=""})
+		@button = TkButton.new(@tootFrame, 'text' => 'toot', 'command' => proc{mastodon.Toot(@text.value, @options[:visibility], @sensitive.value, @spoiler_text.value);@text.value=""})
 		@mediabutton = TkButton.new(@tootFrame, 'text' => 'media', 'command' => proc{mastodon.MediaUpload(Tk.getOpenFile)})
 		@nsfw_button = TkButton.new(@tootFrame, 'text' => 'nsfw', 'command' => proc{@sensitive.value == 'true' ? @sensitive.value = 'false' : @sensitive.value = 'true' })
 		@cw_button = TkButton.new(@tootFrame, 'text' => 'cw', 'command' => proc{@spoiler_text.value == "" ? @spoiler_text.value = "Contents Warning!" : @spoiler_text.value = ""; @sensitive.value == 'true' ? @sensitive.value = 'false' : @sensitive.value = 'true' })
