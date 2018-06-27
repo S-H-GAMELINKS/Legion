@@ -45,7 +45,7 @@ mastodon = ClientInit()
 streaming = StreamInit()
 
 tootFrame = TootFrame.new(window, mastodon)
-tootFrame.set(window)
+tootFrame.set(window, streaming)
 
 home_timeline = Timeline.new(window, "ホームタイムライン")
 home_timeline.set

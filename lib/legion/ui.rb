@@ -59,19 +59,15 @@ class TootFrame
 		@mediabutton.pack('side' => 'left', 'fill' => 'both')
 	end
 
-	def AccountMenu(window)
+	def AccountMenu(window, streaming)
 
 		Dotenv.load
 
 		menu = TkMenu.new(window)
 		url = ENV["MASTODON_URL"].split(",")
 
-		for i in 0...url.count do
-			menu.add('command',
-    	    	    'label'     => "#{url[i]}",
-        	    	'command'   => proc{streaming.num = i;},
-					'underline' => 0)
-		end
+		menu.add('command', 'label'     => "#{url[0]}", 'command'   => proc{streaming.num = 0;}, 'underline' => 0)
+		menu.add('command', 'label'     => "#{url[1]}", 'command'   => proc{streaming.num = 1;}, 'underline' => 0)
 
 		return menu
 	end
@@ -88,10 +84,10 @@ class TootFrame
 		return menu
 	end
 
-	def MenuBar_pack(window)
+	def MenuBar_pack(window, streaming)
 		menubar = TkMenu.new(window)
 
-		menubar.add('cascade', 'menu' => self.AccountMenu(window), 'label' => 'Accounts')
+		menubar.add('cascade', 'menu' => self.AccountMenu(window, streaming), 'label' => 'Accounts')
 		menubar.add('cascade', 'menu' => self.VisibilityMenu(window), 'label' => 'Visibility')
 
 		window.menu(menubar)
@@ -109,11 +105,11 @@ class TootFrame
 		@quitbutton.pack('side' => 'right', 'fill' => 'both')
 	end
 
-	def set(window)
+	def set(window, streaming)
 		self.TootFrame_pack
 		self.Text_pack
 		self.Button_pack
-		self.MenuBar_pack(window)
+		self.MenuBar_pack(window, streaming)
 		self.NsfwButton_pack
 		self.CwButton_pack
 		self.Quitbutton_pack
