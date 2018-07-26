@@ -5,7 +5,7 @@ class Timeline
 	def initialize(window, timeline_name)
 		@timeline				= TkFrame.new(window)
 		@label					= TkLabel.new(@timeline, 'text' => timeline_name, 'width' => 50)
-		@list					= TkListbox.new(@timeline, 'height' => 25, 'selectmode' => 'multiple')
+		@list					= TkListbox.new(@timeline, 'height' => 25, 'selectmode' => 'browse')
 	end
 
 	def timeline_pack
